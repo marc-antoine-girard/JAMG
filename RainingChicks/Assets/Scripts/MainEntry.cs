@@ -18,17 +18,33 @@ public class MainEntry : MonoBehaviour
 
 #endregion
 
-    private void Start() { }
+    private GameFlowManager gameFlowManager;
 
-    private void Update() { }
+    private void Start() {
+        gameFlowManager = GameFlowManager.Instance;
+        
+        gameFlowManager.PreInitialize();
+        
+        gameFlowManager.Initialize();
+    }
 
-    private void FixedUpdate() { }
+    private void Update() {
+        gameFlowManager.Refresh();
+    }
 
-    private void LateUpdate() { }
+    private void FixedUpdate() {
+        gameFlowManager.PhysicRefresh();
+    }
 
-    private void OnApplicationFocus(bool hasFocus) { }
+    private void LateUpdate() {
+        gameFlowManager.LateRefresh();
+    }
 
-    private void OnApplicationPause(bool pauseStatus) { }
+    private void OnApplicationFocus(bool hasFocus) { }    //TODO event
 
-    private void OnApplicationQuit() { }
+    private void OnApplicationPause(bool pauseStatus) { }    //TODO event
+
+    private void OnApplicationQuit() {
+        gameFlowManager.Terminate();
+    }
 }
