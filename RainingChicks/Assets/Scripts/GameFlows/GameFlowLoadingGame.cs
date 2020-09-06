@@ -21,11 +21,17 @@ public class GameFlowLoadingGame : IGameFlow
 
     public void Initialize() { }
 
-    public void Refresh() { }
+    public void Refresh() {
+        GameFlowManager.Instance.SetGameFlow(GameFlowMenuLoop.Instance);
+    }
 
     public void PhysicRefresh() { }
 
     public void LateRefresh() { }
 
-    public void Terminate() { }
+    public void Terminate() {
+#if UNITY_EDITOR
+        Debug.Log("End of loading");
+#endif
+    }
 }

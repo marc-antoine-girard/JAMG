@@ -17,15 +17,25 @@ public class GameFlowMenuLoop : IGameFlow
 
 #endregion
 
-    public void PreInitialize() { }
+    public void PreInitialize() {
+#if UNITY_EDITOR
+        Debug.Log("Entering Menu");
+#endif
+    }
 
     public void Initialize() { }
 
-    public void Refresh() { }
+    public void Refresh() {
+        GameFlowManager.Instance.SetGameFlow(GameFlowGameLoop.Instance);
+    }
 
     public void PhysicRefresh() { }
 
     public void LateRefresh() { }
 
-    public void Terminate() { }
+    public void Terminate() {
+#if UNITY_EDITOR
+        Debug.Log("Leaving Menu");
+#endif
+    }
 }

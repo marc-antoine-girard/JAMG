@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFlowManager
+public class GameFlowManager : IManager
 {
 #region Singleton
 
